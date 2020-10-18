@@ -41,6 +41,7 @@ def shuffle_func():
     # csv reader
     with open('countries.csv', newline='', encoding="UTF-8") as f:
         reader = csv.reader(f)
+        next(reader)
         csv_list = list(reader)
 
     # create jumble list
