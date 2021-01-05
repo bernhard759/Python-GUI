@@ -18,22 +18,13 @@ background_image = PhotoImage(file='img1.png') #set background image
 background_label = Label(root, image=background_image) #create background label
 background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-# Global variable points
-global points
+# Variables
 points = 0
-
-# Global variable round
-global round
 round = 1
-
-# Global variable count list
-global count_list
 count_list = []
 
 # Function
 def shuffle_func():
-
-    global count_list
 
     # clear answer entry box
     entry_answer.delete(0, END)
@@ -56,9 +47,6 @@ def shuffle_func():
     # avoid doubles
     while word in count_list and len(count_list) < len(jumble_list):
             word = choice(jumble_list)
-
-    # configure label
-    label.config(text=word)
     count_list.append(word)
 
     # break word into letters
@@ -68,13 +56,12 @@ def shuffle_func():
     print(break_word)
 
     # turn into word again
-    global shuffled_word
-    shuffled_word = ''
+    shuffled_word = ""
     for letter in break_word:
         shuffled_word += letter
     print(shuffled_word)
 
-    # print shuffled_word to screen
+    # print shuffled_word to gui
     label.config(text=shuffled_word)
 
 
@@ -82,9 +69,7 @@ def shuffle_func():
 def answer():
 
     # global variables
-    global points
-    global round
-    global word
+    global points, round
 
     # check if word is correct
     if word == entry_answer.get():
@@ -110,11 +95,14 @@ def answer():
         label.config(text="")
         # check the points and call msgbox
         if points <=3:
-            msg = messagebox.askyesno('Spiel beendet', 'Das war keine gute Leistung!\nDeine Punktzahl beträgt: ' + str(points) + '\nWillst du nocheinmal spielen?')
+            msg = messagebox.askyesno('Spiel beendet', 'Das war keine gute Leistung!\nDeine Punktzahl beträgt: ' +
+                                      str(points) + '\nWillst du nocheinmal spielen?')
         elif points <=7:
-            msg = messagebox.askyesno('Spiel beendet', 'Das war passabel!\nDeine Punktzahl beträgt: ' + str(points) + '\nWillst du nocheinmal spielen?')
+            msg = messagebox.askyesno('Spiel beendet', 'Das war passabel!\nDeine Punktzahl beträgt: ' +
+                                      str(points) + '\nWillst du nocheinmal spielen?')
         else:
-            msg = messagebox.askyesno('Spiel beendet', 'Tolle Leistung!\nDeine Punktzahl beträgt: ' + str(points) + '\nWillst du nocheinmal spielen?')
+            msg = messagebox.askyesno('Spiel beendet', 'Tolle Leistung!\nDeine Punktzahl beträgt: ' +
+                                      str(points) + '\nWillst du nocheinmal spielen?')
         print(msg)
         # handle the click
         if msg == 1:
@@ -152,7 +140,6 @@ score_label.pack(pady=20)
 # Status bar
 statusbar = Label(root, text="Runde 1 von 10", width=15)
 statusbar.place(rely=1.0, relx=1.0, x=0, y=0, anchor=SE)
-
 
 # Run shuffle function
 shuffle_func()
