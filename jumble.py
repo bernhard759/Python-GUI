@@ -4,6 +4,7 @@
 import tkinter as tk  # import tkinter
 from random import choice, shuffle
 from tkinter import messagebox, END
+from tkinter import ttk
 import csv
 
 
@@ -24,16 +25,21 @@ class JumbleGUI:
         self.root.geometry("400x400")
         self.root.resizable(0, 0)
 
+        # Style
+        s = ttk.Style()
+        s.theme_use("vista")
+        s.configure("TButton", font="Arial 12")
+
         # Word Label
         self.label = tk.Label(self.root, text="", font=("Arial", 24), bg=None, height=1, width=19)
         self.label.pack(pady=20)
 
         # Entry box
-        self.entry_answer = tk.Entry(self.root, font=("Arial", 22))
+        self.entry_answer = ttk.Entry(self.root, font=("Arial", 22))
         self.entry_answer.pack(pady=20)
 
         # Answer Button
-        self.ans_button = tk.Button(self.root, text="Bewerten", font=("Arial", 12), command=self.answer)
+        self.ans_button = ttk.Button(self.root, text="Bewerten", command=self.answer)
         self.ans_button.pack(pady=20)
 
         # Score Label
@@ -146,4 +152,3 @@ class JumbleGUI:
 # Run
 if __name__ == "__main__":
     Jumble = JumbleGUI()
-
