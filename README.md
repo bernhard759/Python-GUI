@@ -1,1 +1,2 @@
-Ein Spiel zum Raten von Wörtern aufgebaut mit Python und tkinter.
+# Word-Jumble    
+This is a game for guessing words that are displayed in a random order. The GUI is built with Pythons tkinter module.
